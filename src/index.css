@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --navy-950: #020817;
+    --navy-900: #050f1f;
+    --navy-800: #0a1628;
+    --navy-700: #0f2040;
+    --amber: #fbbf24;
+    --amber-dim: rgba(251, 191, 36, 0.15);
+    --amber-glow: rgba(251, 191, 36, 0.35);
+    --grid-color: rgba(251, 191, 36, 0.04);
+    --text-primary: #e8edf5;
+    --text-muted: #64748b;
+    --text-dim: #94a3b8;
+    --border: rgba(251, 191, 36, 0.12);
+    --border-subtle: rgba(148, 163, 184, 0.08);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--navy-950);
+    color: var(--text-primary);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(251, 191, 36, 0.25);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--navy-950);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(251, 191, 36, 0.3);
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  /* Grid Background */
+  .grid-bg {
+    background-image:
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Ambient glow orbs */
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  /* Amber accent line */
+  .accent-line {
+    display: inline-block;
+    width: 40px;
+    height: 2px;
+    background: var(--amber);
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+
+  /* Terminal-style label */
+  .terminal-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--amber);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  /* Fintech card */
+  .card-fintech {
+    background: rgba(10, 22, 40, 0.7);
+    border: 1px solid var(--border-subtle);
+    border-radius: 2px;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+  }
+
+  .card-fintech:hover {
+    border-color: var(--border);
+    box-shadow: 0 0 24px var(--amber-dim), 0 8px 32px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+  }
+
+  /* Amber button */
+  .btn-amber {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: transparent;
+    border: 1px solid var(--amber);
+    color: var(--amber);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    border-radius: 1px;
+  }
+
+  .btn-amber:hover {
+    background: var(--amber-dim);
+    box-shadow: 0 0 20px var(--amber-glow);
+    color: #fff;
+  }
+
+  .btn-amber-filled {
+    background: var(--amber);
+    color: #020817;
+    font-weight: 600;
+  }
+
+  .btn-amber-filled:hover {
+    background: #f59e0b;
+    color: #020817;
+    box-shadow: 0 0 30px var(--amber-glow);
+  }
+
+  /* Section reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Data bar */
+  .data-bar {
+    height: 2px;
+    background: linear-gradient(90deg, var(--amber), transparent);
+    border-radius: 1px;
+  }
+
+  /* Scanline overlay */
+  .scanline::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Status dot */
+  .status-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 6px #22c55e;
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  /* Glitch text effect */
+  .text-amber-glow {
+    color: var(--amber);
+    text-shadow: 0 0 20px rgba(251,191,36,0.4);
+  }
+}
